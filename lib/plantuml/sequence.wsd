@@ -1,0 +1,29 @@
+@startuml sequence diagam
+
+title 时序图
+
+autonumber
+== 鉴权阶段 == 
+Alice -> Bob : 请求
+Bob -> Alice : 应答
+
+== 数据上传 == 
+Alice -[#Blue]>x Bob : 上传数据
+note left : 数据需要准备
+
+group 数据处理消息
+Bob --> Candy : 转交数据
+Activate Candy
+... 不超5秒 ...
+Candy --> Bob : 状态返回
+deactivate Candy
+note right : 自行处理
+end
+
+autonumber 40 10
+Bob ->o Alice : 状态返回
+
+== 状态显示 ==
+Alice -> Alice : 给自己发消息
+
+@enduml
